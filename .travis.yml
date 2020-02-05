@@ -3,5 +3,6 @@ script:
   - mvn clean verify
   - docker build -t sirlewiss/backend sample-application-http-api-server/.
   - docker build -t sirlewiss/database sample-application-db-changelog-job/.
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push USER/REPO
+  - echo "$token-dockerhub" | docker login -u "$id-dockerhub" --password-stdin
+  - docker push sirlewiss/backend
+  - docker push sirlewiss/database
