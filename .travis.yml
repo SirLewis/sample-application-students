@@ -1,8 +1,8 @@
 language: java
 script:
   - mvn clean verify
-  - docker build -t sirlewiss/backend sample-application-http-api-server/.
-  - docker build -t sirlewiss/database sample-application-db-changelog-job/.
-  - echo "$token-dockerhub" | docker login -u "$id-dockerhub" --password-stdin
-  - docker push sirlewiss/backend
-  - docker push sirlewiss/database
+  - docker build -t $id-dockerhub/backend sample-application-http-api-server/.
+  - docker build -t $id-dockerhub/database sample-application-db-changelog-job/.
+  - docker login -u $id-dockerhub -p $token-dockerhub
+  - docker push $id-dockerhub/backend
+  - docker push $id-dockerhub/database
