@@ -1,11 +1,11 @@
 language: java
 addons:
   sonarcloud:
-    organization: "SirLewis_sample-application-students" # the key of the org you chose at step #3
+    organization: "sirlewis" # the key of the org you chose at step #3
     token:
       secure: $soncloudtoken # encrypted value of your token
 script:
-  - mvn clean verify
+  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=SirLewis_sample-application-students
   - docker build -t $user/backend sample-application-http-api-server/.
   - docker build -t $user/database sample-application-db-changelog-job/.
   - docker login -u $user -p $token
